@@ -98,9 +98,10 @@ const createSlider = () => {
     slideIndex++;
     changeSlide(slideIndex);
   }, duration);
+  negetiveResult.innerText = "";
  }
  else{
-   negetiveResult.innerText = "";
+   
    negetiveResult.innerText = "Auto slide can'nt work when duration value is negetive or empty, Please input positive value"
   changeSlide(0)
   timer =function () {
@@ -159,6 +160,7 @@ sliderBtn.addEventListener('click', function () {
 // togle spiner
 const toglespinner = (show) => {
   const  spinner = document.getElementById("loding-spiner");
+  const  dno = document.getElementById("loding-spiner");
  if(show){
     spinner.classList.remove("d-hide");
   }
