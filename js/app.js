@@ -1,3 +1,8 @@
+//bonus feature
+// 1. loading spinner
+
+
+
 const imagesArea = document.querySelector('.images');
 const gallery = document.querySelector('.gallery');
 const galleryHeader = document.querySelector('.gallery-header');
@@ -26,6 +31,7 @@ const showImages = (images) => {
     div.innerHTML = ` <img class="img-fluid img-thumbnail" onclick=selectItem(event,"${image.webformatURL}") src="${image.webformatURL}" alt="${image.tags}">`;
     gallery.appendChild(div);
     toglespinner(false);
+    
   })
 
 }
@@ -89,7 +95,6 @@ const createSlider = () => {
     src="${slide}"
     alt="">`;
     sliderContainer.appendChild(item);
-    
   })
 
  if(duration > 0){
@@ -167,3 +172,4 @@ const toglespinner = (show) => {
     spinner.classList.add("d-hide");
   } 
 }
+
