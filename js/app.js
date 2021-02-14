@@ -47,7 +47,6 @@ const showImages = (images) => {
     
     `;
     gallery.appendChild(div);
-    console.log(image);
 
 
     toglespinner(false);
@@ -62,7 +61,6 @@ const getImages = (query) => {
     .then(response => response.json())
     .then(data => {
       showImages(data.hits);
-      console.log(data)
     })
     .catch(err => console.log(err))
 }
