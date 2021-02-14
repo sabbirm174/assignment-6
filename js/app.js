@@ -69,10 +69,16 @@ let slideIndex = 0;
 const selectItem = (event, img) => {
   let element = event.target;
   element.classList.add('added');
- 
+  const selectimg = document.getElementById("selected-imge")
+  
   let item = sliders.indexOf(img);
   if (item === -1) {
     sliders.push(img);
+    selectimg.innerHTML = `
+      <div class="d-flex justify-content-center">
+        <h2>Total select image: ${sliders.length}</h2>
+      </div>
+      `;
   } 
   else {
     // element.classList.remove("added");
@@ -84,8 +90,14 @@ const selectItem = (event, img) => {
     const arrin = sliders.indexOf(img);
     if(arrin > -1){ 
       sliders.splice(arrin,1);
+      selectimg.innerHTML = `
+      <div class="d-flex justify-content-center">
+        <h2>Total select image: ${sliders.length}</h2>
+      </div>
+      `;
     }
       }
+      
 }
 var timer
 const createSlider = () => {
@@ -178,7 +190,9 @@ searchBtn.addEventListener('click', function () {
 })
 
 sliderBtn.addEventListener('click', function () {
-  createSlider()
+  createSlider();
+  const fghf= document.getElementById("selected-imge")
+  fghf.innerHTML= " ";
 })
 
 // togle spiner
