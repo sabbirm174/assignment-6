@@ -28,8 +28,27 @@ const showImages = (images) => {
   images.forEach(image => {
     let div = document.createElement('div');
     div.className = 'col-lg-3 col-md-4 col-xs-6 img-item mb-2';
-    div.innerHTML = ` <img class="img-fluid img-thumbnail" onclick=selectItem(event,"${image.webformatURL}") src="${image.webformatURL}" alt="${image.tags}">`;
+    div.innerHTML = ` <div class="d-flex abso justify-content-center" >
+    <div>
+    <img class="img-fluid img-u img-thumbnail" onclick=selectItem(event,"${image.webformatURL}") src="${image.webformatURL}" alt="${image.tags}">
+    <div class="custom-hover">
+    <div class="d-flex up-sec">
+      <p> Likes: ${image.likes}</p>
+      <p class="ml-3"> Comments: ${image.comments}</p>
+    </div>
+      <div class="d-flex justify-content-center">
+        <p> Views: ${image.views}</p>
+      </div>
+    </div>
+    </div>
+    </div>
+      
+    
+    `;
     gallery.appendChild(div);
+    console.log(image);
+
+
     toglespinner(false);
     
   })
@@ -40,7 +59,10 @@ const getImages = (query) => {
   toglespinner(true);
   fetch(`https://pixabay.com/api/?key=${KEY}=${query}&image_type=photo&pretty=true`)
     .then(response => response.json())
-    .then(data => showImages(data.hits))
+    .then(data => {
+      showImages(data.hits);
+      console.log(data)
+    })
     .catch(err => console.log(err))
 }
 
@@ -52,7 +74,6 @@ const selectItem = (event, img) => {
   let item = sliders.indexOf(img);
   if (item === -1) {
     sliders.push(img);
-    
   } 
   else {
     // element.classList.remove("added");

@@ -60,7 +60,24 @@ img {
 .main {
   display: none;
 }
+.abso{
+  border: 2px solid #ddd;
+  border-radius: 5px;
+}
+.custom-hover {
+  font-size: 16px;
+  font-weight: 500;
+  
 
+}
+.custom-hover .up-sec {
+  background-color: #fff;
+  color: #222;
+  padding: 10px 10px 0px 10px;
+}
+.abso:hover  .custom-hover {
+  display: block;
+}
 @media (max-width: 767px) {
   .justify-content-around.align-items-center.mt-3.gallery-header.mb-2 {
     flex-direction: column;
