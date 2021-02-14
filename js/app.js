@@ -98,10 +98,9 @@ const createSlider = () => {
     slideIndex++;
     changeSlide(slideIndex);
   }, duration);
-  negetiveResult.innerText = "";
+  negetiveResult.innerText = " ";
  }
  else{
-   
    negetiveResult.innerText = "Auto slide can'nt work when duration value is negetive or empty, Please input positive value"
   changeSlide(0)
   timer =function () {
