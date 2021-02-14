@@ -54,7 +54,9 @@ img {
   cursor: pointer;
   margin: 0 3px;
 }
-
+.d-hide{
+  display: none !important;
+}
 .main {
   display: none;
 }

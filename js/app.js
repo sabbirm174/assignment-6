@@ -4,6 +4,7 @@ const galleryHeader = document.querySelector('.gallery-header');
 const searchBtn = document.getElementById('search-btn');
 const sliderBtn = document.getElementById('create-slider');
 const sliderContainer = document.getElementById('sliders');
+let negetiveResult = document.getElementById("negetive-value");
 // selected image 
 let sliders = [];
 
@@ -23,12 +24,14 @@ const showImages = (images) => {
     let div = document.createElement('div');
     div.className = 'col-lg-3 col-md-4 col-xs-6 img-item mb-2';
     div.innerHTML = ` <img class="img-fluid img-thumbnail" onclick=selectItem(event,"${image.webformatURL}") src="${image.webformatURL}" alt="${image.tags}">`;
-    gallery.appendChild(div)
+    gallery.appendChild(div);
+    toglespinner(false);
   })
 
 }
 
 const getImages = (query) => {
+  toglespinner(true);
   fetch(`https://pixabay.com/api/?key=${KEY}=${query}&image_type=photo&pretty=true`)
     .then(response => response.json())
     .then(data => showImages(data.hits))
@@ -53,10 +56,9 @@ const selectItem = (event, img) => {
       element.classList.add('added');
     }
     const arrin = sliders.indexOf(img);
-    if(oi > -1){ 
+    if(arrin > -1){ 
       sliders.splice(arrin,1);
     }
-    console.log(sliders);
       }
 }
 var timer
@@ -86,7 +88,8 @@ const createSlider = () => {
     item.innerHTML = `<img class="w-100"
     src="${slide}"
     alt="">`;
-    sliderContainer.appendChild(item)
+    sliderContainer.appendChild(item);
+    
   })
 
  if(duration > 0){
@@ -97,7 +100,7 @@ const createSlider = () => {
   }, duration);
  }
  else{
-   const negetiveResult = document.getElementById("negetive-value");
+   negetiveResult.innerText = "";
    negetiveResult.innerText = "Auto slide can'nt work when duration value is negetive or empty, Please input positive value"
   changeSlide(0)
   timer =function () {
@@ -153,11 +156,13 @@ sliderBtn.addEventListener('click', function () {
   createSlider()
 })
 
-
-// fffffffffffffff 
-const sdkj = ["kj","lk","iu","ef"]
-const oi = sdkj.indexOf("iu");
-if(oi > -1){ 
-  sdkj.splice(oi,1);
+// togle spiner
+const toglespinner = (show) => {
+  const  spinner = document.getElementById("loding-spiner");
+ if(show){
+    spinner.classList.remove("d-hide");
+  }
+  else{
+    spinner.classList.add("d-hide");
+  } 
 }
-console.log(sdkj);
