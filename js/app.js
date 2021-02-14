@@ -1,5 +1,6 @@
 //bonus feature
 // 1. loading spinner
+// 2. information (i) Likes (ii) Coments (iii) Views
 
 
 
